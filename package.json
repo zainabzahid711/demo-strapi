@@ -9,6 +9,7 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi",
+    "heroku-prebuild": "npm install",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
@@ -25,7 +26,7 @@
   },
   "devDependencies": {
     "@strapi/types": "4.25.13",
-    "@types/node": "^20",
+    "@types/node": "^20.17.28",
     "autoprefixer": "^9.8.8",
     "postcss": "^8.5.3",
     "typescript": "^5"
