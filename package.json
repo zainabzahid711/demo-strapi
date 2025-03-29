@@ -1,0 +1,44 @@
+{
+  "name": "demo-strapi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Strapi application",
+  "scripts": {
+    "build": "strapi build",
+    "deploy": "strapi deploy",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "heroku-postbuild": "npm run build"
+  },
+  "dependencies": {
+    "@alloc/quick-lru": "5.2.0",
+    "@strapi/plugin-cloud": "5.5.0",
+    "@strapi/plugin-users-permissions": "5.5.0",
+    "@strapi/strapi": "^5.12.1",
+    "better-sqlite3": "11.3.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "sharp": "^0.33.5",
+    "styled-components": "^6.0.0"
+  },
+  "devDependencies": {
+    "@strapi/types": "^5.12.1",
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^9.8.8",
+    "postcss": "^8.5.3",
+    "tailwindcss": "4.0.17",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "86194398-fdbe-41a9-a5b7-95c8b81923ff"
+  }
+}
