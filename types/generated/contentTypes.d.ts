@@ -362,6 +362,89 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiBookingBooking extends Schema.CollectionType {
+  collectionName: 'bookings';
+  info: {
+    singularName: 'booking';
+    pluralName: 'bookings';
+    displayName: 'booking';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    booking_date: Attribute.DateTime;
+    status: Attribute.Enumeration<['pending', 'cancelled', 'confirmed']>;
+    special_requests: Attribute.Text;
+    users_permissions_user: Attribute.Relation<
+      'api::booking.booking',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    service: Attribute.Relation<
+      'api::booking.booking',
+      'manyToOne',
+      'api::service.service'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiServiceService extends Schema.CollectionType {
+  collectionName: 'services';
+  info: {
+    singularName: 'service';
+    pluralName: 'services';
+    displayName: 'service';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    type: Attribute.Enumeration<['hotel', 'gym', 'bus', 'salon']>;
+    location: Attribute.String;
+    description: Attribute.Text;
+    available_slots: Attribute.Integer;
+    price_per_booking: Attribute.Decimal;
+    bookings: Attribute.Relation<
+      'api::service.service',
+      'oneToMany',
+      'api::booking.booking'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -770,6 +853,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    bookings: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::booking.booking'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -797,6 +885,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::booking.booking': ApiBookingBooking;
+      'api::service.service': ApiServiceService;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
