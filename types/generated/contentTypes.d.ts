@@ -368,13 +368,17 @@ export interface ApiBookingBooking extends Schema.CollectionType {
     singularName: 'booking';
     pluralName: 'bookings';
     displayName: 'booking';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    booking_date: Attribute.DateTime;
-    status: Attribute.Enumeration<['pending', 'cancelled', 'confirmed']>;
+    booking_date: Attribute.DateTime & Attribute.Required;
+    status: Attribute.Enumeration<
+      ['pending', 'cancelled', 'confirmed', 'completed']
+    > &
+      Attribute.DefaultTo<'pending'>;
     special_requests: Attribute.Text;
     users_permissions_user: Attribute.Relation<
       'api::booking.booking',
@@ -386,6 +390,7 @@ export interface ApiBookingBooking extends Schema.CollectionType {
       'manyToOne',
       'api::service.service'
     >;
+    confirmation_code: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -416,7 +421,9 @@ export interface ApiServiceService extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Required;
+    duration: Attribute.Integer & Attribute.Required;
+    price: Attribute.Decimal & Attribute.Required;
     type: Attribute.Enumeration<['hotel', 'gym', 'bus', 'salon']>;
     location: Attribute.String;
     description: Attribute.Text;
@@ -835,6 +842,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       }>;
     email: Attribute.Email &
       Attribute.Required &
+      Attribute.Unique &
       Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
