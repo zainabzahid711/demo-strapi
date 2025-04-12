@@ -4,11 +4,13 @@
   "info": {
     "singularName": "booking",
     "pluralName": "bookings",
-    "displayName": "booking",
-    "description": ""
+    "displayName": "booking"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": true,
+    "beforeCreate": {
+        "handler": "api::booking.booking.beforeCreate"
+      }
   },
   "pluginOptions": {},
   "attributes": {
@@ -20,20 +22,12 @@
       "type": "enumeration",
       "enum": [
         "pending",
-        "cancelled",
         "confirmed",
-        "completed"
-      ],
-      "default": "pending"
+        "cancelled"
+      ]
     },
     "special_requests": {
-      "type": "text"
-    },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "bookings"
+      "type": "string"
     },
     "service": {
       "type": "relation",
@@ -41,8 +35,15 @@
       "target": "api::service.service",
       "inversedBy": "bookings"
     },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "bookings"
+    },
     "confirmation_code": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     }
   }
 }

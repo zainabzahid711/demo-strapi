@@ -368,29 +368,28 @@ export interface ApiBookingBooking extends Schema.CollectionType {
     singularName: 'booking';
     pluralName: 'bookings';
     displayName: 'booking';
-    description: '';
   };
   options: {
     draftAndPublish: true;
+    beforeCreate: {
+      handler: 'api::booking.booking.beforeCreate';
+    };
   };
   attributes: {
     booking_date: Attribute.DateTime & Attribute.Required;
-    status: Attribute.Enumeration<
-      ['pending', 'cancelled', 'confirmed', 'completed']
-    > &
-      Attribute.DefaultTo<'pending'>;
-    special_requests: Attribute.Text;
-    users_permissions_user: Attribute.Relation<
-      'api::booking.booking',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
+    status: Attribute.Enumeration<['pending', 'confirmed', 'cancelled']>;
+    special_requests: Attribute.String;
     service: Attribute.Relation<
       'api::booking.booking',
       'manyToOne',
       'api::service.service'
     >;
-    confirmation_code: Attribute.String;
+    users_permissions_user: Attribute.Relation<
+      'api::booking.booking',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    confirmation_code: Attribute.String & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
