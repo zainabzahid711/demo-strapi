@@ -21,6 +21,7 @@
     },
     "email": {
       "type": "email",
+      "unique": true,
       "minLength": 6,
       "configurable": false,
       "required": true
@@ -64,6 +65,12 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
+    },
+    "bookings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::booking.booking",
+      "mappedBy": "users_permissions_user"
     }
   }
 }
