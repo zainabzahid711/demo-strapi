@@ -44,12 +44,6 @@
     },
     "price_per_booking": {
       "type": "decimal"
-    },
-    "bookings": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::booking.booking",
-      "mappedBy": "service"
     }
   }
 }
