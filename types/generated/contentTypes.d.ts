@@ -368,28 +368,31 @@ export interface ApiBookingBooking extends Schema.CollectionType {
     singularName: 'booking';
     pluralName: 'bookings';
     displayName: 'booking';
+    description: '';
   };
   options: {
     draftAndPublish: true;
-    beforeCreate: {
-      handler: 'api::booking.booking.beforeCreate';
-    };
   };
   attributes: {
-    booking_date: Attribute.DateTime & Attribute.Required;
     status: Attribute.Enumeration<['pending', 'confirmed', 'cancelled']>;
-    special_requests: Attribute.String;
-    service: Attribute.Relation<
+    confirmation_code: Attribute.String & Attribute.Unique;
+    room: Attribute.Relation<
       'api::booking.booking',
-      'manyToOne',
-      'api::service.service'
+      'oneToOne',
+      'api::room.room'
     >;
+    startDate: Attribute.Date;
+    endDate: Attribute.Date;
+    guest: Attribute.Integer;
+    totalPrice: Attribute.BigInteger;
     users_permissions_user: Attribute.Relation<
       'api::booking.booking',
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    confirmation_code: Attribute.String & Attribute.Unique;
+    customer_name: Attribute.String;
+    customer_email: Attribute.Email;
+    specialRequests: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -404,6 +407,36 @@ export interface ApiBookingBooking extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRoomRoom extends Schema.CollectionType {
+  collectionName: 'rooms';
+  info: {
+    singularName: 'room';
+    pluralName: 'rooms';
+    displayName: 'room';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.Text;
+    price: Attribute.BigInteger;
+    size: Attribute.Integer;
+    capacity: Attribute.Integer;
+    rating: Attribute.Integer;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Feature: Attribute.Component<'room.features', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::room.room', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::room.room', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -428,11 +461,6 @@ export interface ApiServiceService extends Schema.CollectionType {
     description: Attribute.Text;
     available_slots: Attribute.Integer;
     price_per_booking: Attribute.Decimal;
-    bookings: Attribute.Relation<
-      'api::service.service',
-      'oneToMany',
-      'api::booking.booking'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -860,7 +888,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    bookings: Attribute.Relation<
+    user_bookings: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToMany',
       'api::booking.booking'
@@ -893,6 +921,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::booking.booking': ApiBookingBooking;
+      'api::room.room': ApiRoomRoom;
       'api::service.service': ApiServiceService;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
