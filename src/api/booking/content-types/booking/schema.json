@@ -52,6 +52,9 @@
     },
     "customer_email": {
       "type": "email"
+    },
+    "specialRequests": {
+      "type": "text"
     }
   }
 }

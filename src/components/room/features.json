@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_room_features",
+  "info": {
+    "displayName": "features",
+    "icon": "check",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
