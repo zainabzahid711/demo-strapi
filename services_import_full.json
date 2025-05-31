@@ -1,0 +1,132 @@
+[
+    {
+        "data": {
+            "name": "Haircut & Blow Dry",
+            "description": "Trendy haircut with blow dry styling, only for women.",
+            "price": 1500,
+            "price_per_booking": 1500,
+            "duration": 45,
+            "available_slots": 8,
+            "type": "salon",
+            "location": "DHA, Lahore",
+            "publishedAt": "2025-04-26T00:00:00.000Z"
+        }
+    },
+    {
+        "data": {
+            "name": "Bridal Makeup",
+            "description": "Full bridal makeup service including hairstyle and jewelry setting.",
+            "price": 8000,
+            "price_per_booking": 8000,
+            "duration": 120,
+            "available_slots": 3,
+            "type": "salon",
+            "location": "Gulberg, Lahore",
+            "publishedAt": "2025-04-26T00:00:00.000Z"
+        }
+    },
+    {
+        "data": {
+            "name": "Facial + Whitening Mask",
+            "description": "Deep cleansing facial with whitening mask for glowing skin.",
+            "price": 2500,
+            "price_per_booking": 2500,
+            "duration": 60,
+            "available_slots": 5,
+            "type": "salon",
+            "location": "Ichra, Lahore",
+            "publishedAt": "2025-04-26T00:00:00.000Z"
+        }
+    },
+    {
+        "data": {
+            "name": "Full Body Wax",
+            "description": "Complete waxing service using premium products. Women only.",
+            "price": 3000,
+            "price_per_booking": 3000,
+            "duration": 90,
+            "available_slots": 4,
+            "type": "salon",
+            "location": "Model Town, Lahore",
+            "publishedAt": "2025-04-26T00:00:00.000Z"
+        }
+    },
+    {
+        "data": {
+            "name": "Threading - Eyebrows & Upper Lips",
+            "description": "Expert threading for clean brows and upper lips.",
+            "price": 300,
+            "price_per_booking": 300,
+            "duration": 15,
+            "available_slots": 10,
+            "type": "salon",
+            "location": "Gulshan Ravi, Lahore",
+            "publishedAt": "2025-04-26T00:00:00.000Z"
+        }
+    },
+    {
+        "data": {
+            "name": "Manicure & Pedicure",
+            "description": "Relaxing manicure and pedicure combo for soft, clean hands and feet.",
+            "price": 1200,
+            "price_per_booking": 1200,
+            "duration": 60,
+            "available_slots": 6,
+            "type": "salon",
+            "location": "Johar Town, Lahore",
+            "publishedAt": "2025-04-26T00:00:00.000Z"
+        }
+    },
+    {
+        "data": {
+            "name": "Hair Protein Treatment",
+            "description": "Nourishing treatment for dry and damaged hair.",
+            "price": 3500,
+            "price_per_booking": 3500,
+            "duration": 70,
+            "available_slots": 5,
+            "type": "salon",
+            "location": "Garden Town, Lahore",
+            "publishedAt": "2025-04-26T00:00:00.000Z"
+        }
+    },
+    {
+        "data": {
+            "name": "Henna Mehndi",
+            "description": "Traditional henna design for hands and arms.",
+            "price": 1000,
+            "price_per_booking": 1000,
+            "duration": 40,
+            "available_slots": 8,
+            "type": "salon",
+            "location": "Ichra, Lahore",
+            "publishedAt": "2025-04-26T00:00:00.000Z"
+        }
+    },
+    {
+        "data": {
+            "name": "Glowing Skin Polisher",
+            "description": "Full body skin polish for radiant glow and smoothness.",
+            "price": 2800,
+            "price_per_booking": 2800,
+            "duration": 60,
+            "available_slots": 4,
+            "type": "salon",
+            "location": "Wapda Town, Lahore",
+            "publishedAt": "2025-04-26T00:00:00.000Z"
+        }
+    },
+    {
+        "data": {
+            "name": "Hair Rebonding",
+            "description": "Permanent straightening for frizzy and curly hair types.",
+            "price": 7000,
+            "price_per_booking": 7000,
+            "duration": 150,
+            "available_slots": 2,
+            "type": "salon",
+            "location": "Allama Iqbal Town, Lahore",
+            "publishedAt": "2025-04-26T00:00:00.000Z"
+        }
+    }
+]
