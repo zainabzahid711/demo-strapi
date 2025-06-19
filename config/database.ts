@@ -16,7 +16,7 @@ export default ({
     mysql: {
       connection: {
         host: env("DATABASE_HOST", "localhost"),
-        port: parseInt(env("DATABASE_PORT", "3306"), 10),
+        port: parseInt(env("DATABASE_PORT", "1337"), 10),
         database: env("DATABASE_NAME", "strapi"),
         user: env("DATABASE_USERNAME", "strapi"),
         password: env("DATABASE_PASSWORD", "strapi"),
