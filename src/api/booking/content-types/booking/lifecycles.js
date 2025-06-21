@@ -1,21 +1,22 @@
-"use strict";
-
 module.exports = {
-  async beforeCreate(event) {
-    console.log("🔥🔥🔥 HOOK EXECUTION STARTED");
+  async afterCreate(event) {
+    const { result } = event;
+
+    // Use the correct field names from your content-type
+    const { customer_email, customer_name, room, startDate, endDate } = result;
+
     try {
-      const { data } = event.params;
-
-      if (!data.confirmation_code) {
-        const code = Math.floor(100000 + Math.random() * 900000).toString();
-        data.confirmation_code = code;
-        console.log("✅✅✅ GENERATED CODE:", code);
-
-        // Force the change to be recognized
-        event.params.data = { ...event.params.data, confirmation_code: code };
-      }
-    } catch (error) {
-      console.error("❌ HOOK ERROR:", error);
+      await strapi.plugins["email"].services.email.send({
+        to: customer_email,
+        from: process.env.EMAIL_FROM,
+        subject: "Booking Confirmed",
+        text: `Hi ${customer_name}, your booking for ${room} from ${startDate} to ${endDate} is confirmed.`,
+        html: `<p>Hi ${customer_name},</p>
+              <p>Your booking for <strong>${room}</strong> from <strong>${startDate}</strong> to <strong>${endDate}</strong> is confirmed.</p>`,
+      });
+      console.log("Email sent successfully");
+    } catch (err) {
+      console.error("Error sending email:", err);
     }
   },
 };
