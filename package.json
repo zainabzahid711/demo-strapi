@@ -16,15 +16,16 @@
     "@alloc/quick-lru": "5.2.0",
     "@strapi/plugin-i18n": "4.25.13",
     "@strapi/plugin-users-permissions": "4.25.13",
-    "@strapi/provider-email-nodemailer": "^5.12.4",
+    "@strapi/provider-email-nodemailer": "^5.16.0",
     "@strapi/strapi": "4.25.13",
     "better-sqlite3": "11.3.0",
     "pg": "^8.14.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^5.3.4",
+    "strapi-plugin-email-designer": "^2.2.1",
     "strapi-plugin-import-export-content": "^0.4.2",
-    "styled-components": "^5.3.11"
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@strapi/types": "4.25.13",

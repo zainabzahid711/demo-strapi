@@ -55,6 +55,10 @@
     },
     "specialRequests": {
       "type": "text"
+    },
+    "referenceId": {
+      "type": "uid",
+      "targetField": "customer_name"
     }
   }
 }
