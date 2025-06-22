@@ -1,7 +1,20 @@
 /**
  * booking router
  */
-
-import { factories } from '@strapi/strapi';
-
-export default factories.createCoreRouter('api::booking.booking');
+export default {
+  routes: [
+    {
+      method: "GET",
+      path: "/bookings/forecast",
+      handler: "booking.getForecast",
+      config: {
+        auth: false,
+        policies: [],
+        middlewares: [],
+        query: {
+          roomId: { type: "string", required: true },
+        },
+      },
+    },
+  ],
+};

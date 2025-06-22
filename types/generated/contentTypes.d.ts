@@ -432,6 +432,7 @@ export interface ApiRoomRoom extends Schema.CollectionType {
     rating: Attribute.Integer;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Feature: Attribute.Component<'room.features', true>;
+    room_type: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

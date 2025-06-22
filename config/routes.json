@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/bookings",
+      "handler": "booking.create",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

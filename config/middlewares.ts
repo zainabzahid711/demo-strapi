@@ -6,7 +6,13 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          "connect-src": ["'self'", "http:", "https:"],
+          "connect-src": [
+            "'self'",
+            "http:",
+            "https:",
+            "http://localhost:8002", // Add your Python server
+            "http://127.0.0.1:8002",
+          ],
           "img-src": [
             "'self'",
             "data:",

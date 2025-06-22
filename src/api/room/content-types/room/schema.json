@@ -46,6 +46,9 @@
       "type": "component",
       "repeatable": true,
       "component": "room.features"
+    },
+    "room_type": {
+      "type": "string"
     }
   }
 }
