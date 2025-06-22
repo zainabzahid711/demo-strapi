@@ -16,5 +16,23 @@ export default {
         },
       },
     },
+    {
+      method: "GET",
+      path: "/bookings", // Becomes /api/bookings
+      handler: "booking.find", // Uses Strapi's default find method
+      config: {
+        auth: false,
+        policies: [],
+        middlewares: [],
+      },
+    },
+    {
+      method: "POST",
+      path: "/bookings",
+      handler: "booking.create",
+      config: {
+        /* ... */
+      },
+    },
   ],
 };
